@@ -1,0 +1,37 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "functions"
+
+# Handle SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Redirect /admin to the admin interface
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+# Function redirects
+[[redirects]]
+  from = "/api/posts"
+  to = "/.netlify/functions/getPosts"
+  status = 200
+
+[[redirects]]
+  from = "/api/posts/create"
+  to = "/.netlify/functions/createPost"
+  status = 200
+  
+[[redirects]]
+  from = "/api/posts/update"
+  to = "/.netlify/functions/updatePost"
+  status = 200
+  
+[[redirects]]
+  from = "/api/posts/delete/*"
+  to = "/.netlify/functions/deletePost"
+  status = 200
